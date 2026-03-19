@@ -54,7 +54,7 @@ def train_model(device="cpu", step_num=10000, dir="./data/trajectory/trajectory_
         train_loss = model.step(states, actions, rewards, dones, all_reward, curr_score, timesteps, attention_mask, next_states)
         i+=1
         if i%loss_report==0:
-            logger.info("Step: {}, All loss: {}, loss1: {}, loss2: {}, loss3: {}, loss4: {}, w: {}, score_target: {}, score_preds: {}, score_preds1: {}"
+            logger.info("Step: {}, All loss: {}, loss1: {}, loss2: {}, loss3: {}, loss4(placeholder): {}, w: {}, score_target: {}, score_preds: {}, score_preds1: {}"
                         .format(i, train_loss[0], train_loss[1], train_loss[2], train_loss[3], train_loss[4],
                                 train_loss[5], train_loss[6], train_loss[7], train_loss[8]))
         model.scheduler.step()

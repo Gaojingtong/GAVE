@@ -1,0 +1,16 @@
+# Ignore Python bytecode caches in all folders
+__pycache__/
+
+# Keep only the explicit period-x.csv in traffic
+data/traffic/*
+!data/traffic/period-x.csv
+
+# Keep only trajectory example CSV
+data/trajectory/*
+!data/trajectory/trajectory_data_example.csv
+
+# Keep log/model folders but ignore generated files
+code/log/*
+!code/log/.gitkeep
+code/saved_model/*
+!code/saved_model/.gitkeep

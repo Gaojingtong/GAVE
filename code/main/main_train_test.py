@@ -18,7 +18,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--step_num', type=int, default=2)
     parser.add_argument('--save_step', type=int, default=1)
-    parser.add_argument('--dir', type=str, default="../data/trajectory/trajectory_data.csv")
+    parser.add_argument('--dir', type=str, default="../data/trajectory/trajectory_data_example.csv")
     parser.add_argument('--test_csv', type=str, default="../data/traffic/period-7.csv")
     parser.add_argument('--hidden_size', type=int, default=512)
     parser.add_argument('--learning_rate', type=float, default=0.0001)
@@ -68,9 +68,11 @@ if __name__ == "__main__":
     print("Settings: \n", model_param)
 
     time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    os.makedirs("./log", exist_ok=True)
     filename = "./log/" + model_param["test_csv"].split("/")[1] + "_" + time_now
     with open(filename + "_param.txt", 'w') as file:
         file.write(json.dumps(model_param))
+    os.makedirs("./saved_model", exist_ok=True)
     model_param['save_dir'] = "./saved_model/DTtest_"+time_now
 
     print("##################Training##################")
