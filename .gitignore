@@ -8,6 +8,7 @@ data/traffic/*
 # Keep only trajectory example CSV
 data/trajectory/*
 !data/trajectory/trajectory_data_example.csv
+!data/trajectory/merge.py
 
 # Keep log/model folders but ignore generated files
 code/log/*
