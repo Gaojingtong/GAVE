@@ -61,7 +61,7 @@ The loss function in the original paper is highly sensitive to the hyperparamete
 In addition, we have provided a more stable loss function without learnable value functions. It may not perform as well as the original loss function with careful adjustment, but it is more stable and only requires a slight adjustment of the hyperparameters to achieve a comparable effect as described in the paper.
 
 You can adjust the loss in code/bidding_train_env/baseline/dt/dt.py
-You can adjust the weight parameters of different loss parts to influence the training outcome.
+You can adjust the weights after different loss parts to influence the training outcome.
 
 ```
 # Loss function without learnable value function. It's more stable but may perform worse than a finetuned loss with learnable value function.
