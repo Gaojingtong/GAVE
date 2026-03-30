@@ -28,6 +28,33 @@
 
   ```python code/main/main_train_test.py```
 
+# Prepare the Datasets
+The datasets could be downloaded from the [NeurIPS 2024 Competition Auto-Bidding in Large-Scale Auctions](https://tianchi.aliyun.com/competition/entrance/532236/rankingList).
+We express our utmost respect for their tremendous contributions to the auto-bidding and computational advertising community!
+#### 1) AuctionNet Dataset
+```
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_period_7-8.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_period_9-10.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_period_11-12.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_period_13.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_trajectory_data.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_trajectory_data_extended_1.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/autoBidding_aigb_track_data_trajectory_data_extended_2.zip
+```
+
+#### 2) AuctionNet-sparse Dataset
+```
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_period_7-8.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_period_9-10.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_period_11-12.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_period_13.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_trajectory_data_1.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_trajectory_data_2.zip
+https://alimama-bidding-competition.oss-cn-beijing.aliyuncs.com/share/final/autoBidding_aigb_track_final_data_trajectory_data_3.zip
+```
+Each training data contains 3 files _data, _data_extended_1 and _data_extended_2. After download, you should concat them to a full dataset local file for training.
+
+
 # Note
 The loss function in the original paper is highly sensitive to the hyperparameters, so it requires careful adjustment to achieve good results. This might be because the accuracy of the estimation of the value function significantly affects the model performance.
 
@@ -41,7 +68,7 @@ You can adjust the loss in code/bidding_train_env/baseline/dt/dt.py
 # wo = torch.sigmoid(1 * (curr_score_preds_1-curr_score_preds.clone().detach()))
 # wo_frozen = wo.clone().detach()
 # loss1 = torch.mean((1-wo_frozen)*((action_preds - action_target) ** 2) + wo_frozen*((action_preds - action_1_frozen) ** 2))
-# loss2 = torch.mean((curr_score_preds - curr_score_target) ** 2)*200
+# loss2 = torch.mean((curr_score_preds - curr_score_target) ** 2)*2000
 # loss3 = torch.mean(1-wo)*100
 # loss = loss1+loss2+loss3
 
